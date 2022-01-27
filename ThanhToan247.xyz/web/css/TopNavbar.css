@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+nav {
+    position: relative;
+    border-radius: 8px;
+    font-size: 0;
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, .1);
+}
+
+nav a {
+    font-size: 17px;
+    text-transform: uppercase;
+    color: white;
+    text-decoration: none;
+    line-height: 50px;
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    text-align: center;
+}
+
+nav .animation {
+    position: absolute;
+    height: 100%;
+    height: 5px;
+    /*top: 0;*/
+    bottom: 0;
+    z-index: 0;
+    background: whitesmoke;
+    border-radius: 8px;
+    transition: all .5s ease 0s;
+}
+
+nav a:nth-child(1) {
+    width: 100px;
+}
+
+nav a:nth-child(1):hover~.animation {
+    width: 100px;
+    left: 0;
+}
+
+nav a:nth-child(2) {
+    width: 110px;
+}
+
+nav a:nth-child(2):hover~.animation {
+    width: 110px;
+    left: 100px;
+}
+
+nav a:nth-child(3) {
+    width: 100px;
+}
+
+nav a:nth-child(3):hover~.animation {
+    width: 100px;
+    left: 210px;
+}
+
+nav a:nth-child(4) {
+    width: 160px;
+}
+
+nav a:nth-child(4):hover~.animation {
+    width: 160px;
+    left: 310px;
+}
+
+nav a:nth-child(5) {
+    width: 120px;
+}
+
+nav a:nth-child(5):hover~.animation {
+    width: 120px;
+    left: 470px;
+}
+
+.navbardiv {
+    box-shadow: 3px 3px 10px 1px #423631;
+    background: #11101d;
+    position: relative;
+    z-index: 10;
+}
+
+.navdiv {
+    width: 75%;
+    display: inline-block;
+    text-align: center;
+    padding: 10px 0px;
+}
+
+.navdiv2 {
+    display: inline-block;
+}
+
+.btn-login {
+    background: whitesmoke;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px 30px;
+    text-align: center;
+    margin: 0 auto;
+    cursor: pointer;
+    font-size: 17px;
+}
+
+.div-login {
+    text-align: center;
+    display: inline-block;
+    margin: 15px;
+    margin-left: 20px;
+}
+
+#nav1-animation {
+    display: none;
+    border-radius: 8px;
+    height: 5px;
+    width: 100px;
+    background-color: white;
+    position: absolute;
+    margin-top: -5px;
+}
+
+#nav2-animation {
+    display: none;
+    border-radius: 8px;
+    height: 5px;
+    width: 110px;
+    margin-left: 100px;
+    background-color: white;
+    position: absolute;
+
+    margin-top: -5px;
+}
+
+#nav3-animation {
+    display: none;
+    border-radius: 8px;
+    height: 5px;
+    width: 100px;
+    margin-left: 210px;
+    background-color: white;
+    position: absolute;
+
+    margin-top: -5px;
+}
+
+#nav4-animation {
+    display: none;
+    border-radius: 8px;
+    height: 5px;
+    width: 160px;
+    margin-left: 310px;
+    background-color: white;
+    position: absolute;
+    margin-top: -5px;
+}
+
+#nav5-animation {
+    display: none;
+    border-radius: 8px;
+    height: 5px;
+    width: 120px;
+    margin-left: 470px;
+    background-color: white;
+    position: absolute;
+
+    margin-top: -5px;
+}
+
+.img-avatar{
+    margin: -13px 0px;
+    height: 38px;
+    border-radius: 12px;
+    margin-left: -15px;
+}

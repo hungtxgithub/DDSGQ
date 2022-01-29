@@ -10,42 +10,42 @@ package models;
  * @author hungt
  */
 public class Price {
-    private int PriceID;
-    private float Price;
-    private Supplier supplierID;
+    private int priceID;
+    private float price;
+    private int supplierID;
     private float discount;
 
     public Price() {
     }
 
-    public Price(int PriceID, float Price, Supplier supplierID, float discount) {
-        this.PriceID = PriceID;
-        this.Price = Price;
+    public Price(int priceID, float price, int supplierID, float discount) {
+        this.priceID = priceID;
+        this.price = price;
         this.supplierID = supplierID;
         this.discount = discount;
     }
 
     public int getPriceID() {
-        return PriceID;
+        return priceID;
     }
 
-    public void setPriceID(int PriceID) {
-        this.PriceID = PriceID;
+    public void setPriceID(int priceID) {
+        this.priceID = priceID;
     }
 
     public float getPrice() {
-        return Price;
+        return price;
     }
 
-    public void setPrice(float Price) {
-        this.Price = Price;
+    public void setPrice(float price) {
+        this.price = price;
     }
 
-    public Supplier getSupplierID() {
+    public int getSupplierID() {
         return supplierID;
     }
 
-    public void setSupplierID(Supplier supplierID) {
+    public void setSupplierID(int supplierID) {
         this.supplierID = supplierID;
     }
 
@@ -59,8 +59,10 @@ public class Price {
 
     @Override
     public String toString() {
-        return "Price{" + "PriceID=" + PriceID + ", Price=" + Price + ", supplierID=" + supplierID + ", discount=" + discount + '}';
+        return "Price{" + "priceID=" + priceID + ", price=" + price + ", supplierID=" + supplierID + ", discount=" + discount + '}';
     }
+
+    
     
     
 }

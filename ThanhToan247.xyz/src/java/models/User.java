@@ -7,8 +7,8 @@ public class User {
     private String username;
     private String password;
     private String email;
-    private float accountBalance;
-    private float totalMoney;
+    private float remainingMoney;
+    private float totalMoneyLoaded;
     private float discount;
     private String avatar;
     private int role;
@@ -18,13 +18,13 @@ public class User {
     public User() {
     }
 
-    public User(int userID, String username, String password, String email, float accountBalance, float totalMoney, float discount, String avatar, int role, int status, String timeCreated) {
+    public User(int userID, String username, String password, String email, float remainingMoney, float totalMoneyLoaded, float discount, String avatar, int role, int status, String timeCreated) {
         this.userID = userID;
         this.username = username;
         this.password = password;
         this.email = email;
-        this.accountBalance = accountBalance;
-        this.totalMoney = totalMoney;
+        this.remainingMoney = remainingMoney;
+        this.totalMoneyLoaded = totalMoneyLoaded;
         this.discount = discount;
         this.avatar = avatar;
         this.role = role;
@@ -64,20 +64,20 @@ public class User {
         this.email = email;
     }
 
-    public float getAccountBalance() {
-        return accountBalance;
+    public float getRemainingMoney() {
+        return remainingMoney;
     }
 
-    public void setAccountBalance(float accountBalance) {
-        this.accountBalance = accountBalance;
+    public void setRemainingMoney(float remainingMoney) {
+        this.remainingMoney = remainingMoney;
     }
 
-    public float getTotalMoney() {
-        return totalMoney;
+    public float getTotalMoneyLoaded() {
+        return totalMoneyLoaded;
     }
 
-    public void setTotalMoney(float totalMoney) {
-        this.totalMoney = totalMoney;
+    public void setTotalMoneyLoaded(float totalMoneyLoaded) {
+        this.totalMoneyLoaded = totalMoneyLoaded;
     }
 
     public float getDiscount() {
@@ -122,8 +122,10 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" + "userID=" + userID + ", username=" + username + ", password=" + password + ", email=" + email + ", accountBalance=" + accountBalance + ", totalMoney=" + totalMoney + ", discount=" + discount + ", avatar=" + avatar + ", role=" + role + ", status=" + status + ", timeCreated=" + timeCreated + '}';
+        return "User{" + "userID=" + userID + ", username=" + username + ", password=" + password + ", email=" + email + ", remainingMoney=" + remainingMoney + ", totalMoneyLoaded=" + totalMoneyLoaded + ", discount=" + discount + ", avatar=" + avatar + ", role=" + role + ", status=" + status + ", timeCreated=" + timeCreated + '}';
     }
+  
+
     
     
 

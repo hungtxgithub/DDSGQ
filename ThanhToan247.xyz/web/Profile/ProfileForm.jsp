@@ -217,8 +217,8 @@
         </div>
         <hr>
         <div class='div-2'>
-            <span class='icon-div2'><img src="../img/piggy-bank.png" alt=""><span>Số Dư: <%=new DecimalFormat("###,###,###").format(((User) session.getAttribute("user")).getAccountBalance()) + " VNĐ"%></span></span>
-            <span class='icon-div2'><img src="../img/diagram.png" alt=""><span>Đã Nạp: <%=new DecimalFormat("###,###,###").format(((User)session.getAttribute("user")).getTotalMoney())+" VNĐ" %></span></span>
+            <span class='icon-div2'><img src="../img/piggy-bank.png" alt=""><span>Số Dư: <%=new DecimalFormat("###,###,###").format(((User) session.getAttribute("user")).getRemainingMoney()) + " VNĐ"%></span></span>
+            <span class='icon-div2'><img src="../img/diagram.png" alt=""><span>Đã Nạp: <%=new DecimalFormat("###,###,###").format(((User)session.getAttribute("user")).getTotalMoneyLoaded())+" VNĐ" %></span></span>
             <span class='icon-div2'><img src="../img/giftbox.png" alt=""><span>Chiết khấu: ${user.discount}%</span></span>
         </div>
     </div>

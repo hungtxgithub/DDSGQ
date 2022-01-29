@@ -11,7 +11,7 @@ package models;
  */
 public class CardType {
     private int cardTypeID;
-    private String name;
+    private String cardTypeName;
 
     public CardType() {
     }
@@ -22,7 +22,7 @@ public class CardType {
 
     public CardType(int cardTypeID, String name) {
         this.cardTypeID = cardTypeID;
-        this.name = name;
+        this.cardTypeName = name;
     }
 
     public int getCardTypeID() {
@@ -34,16 +34,16 @@ public class CardType {
     }
 
     public String getName() {
-        return name;
+        return cardTypeName;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.cardTypeName = name;
     }
 
     @Override
     public String toString() {
-        return "CardType{" + "cardTypeID=" + cardTypeID + ", name=" + name + '}';
+        return "CardType{" + "cardTypeID=" + cardTypeID + ", name=" + cardTypeName + '}';
     }
 
    

@@ -21,7 +21,7 @@ import javax.servlet.http.HttpSession;
  * @author hungt
  */
 @WebServlet(name = "CodeVerification", urlPatterns = {"/codeverification"})
-public class CodeVerification extends HttpServlet {
+public class CodeVeriSignUp extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>

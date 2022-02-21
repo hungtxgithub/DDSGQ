@@ -156,6 +156,18 @@
                 margin: 0 0 21px;
                 font-weight: 700;
             }
+
+            .active-price{
+                border: 1px solid rgb(76, 97, 20);
+                cursor: pointer;
+                transform: scale(1.08);
+                box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+                background-color: #f7f7e6;
+            }
+            .notEnough{
+                color: red;
+
+            }
         </style>
 
     </head>
@@ -171,19 +183,22 @@
                     <img <c:if test="${o.supplierID==SupplierID}">${active}</c:if> onclick="window.location = '?SupplierID=${o.supplierID}';" src="${o.image}" alt=''>
                 </c:forEach>
             </div>
-            <form action="ordertest" method="get">
-                <input style="display: none" name='supplierID' value='${SupplierID}'>
-                <div class="cmg" <c:if test="${SupplierID==null}">
-                     style="display: none;"
-                    </c:if>><hr><br>
-                    <h2>Chọn mệnh giá: </h2>
+
+
+            <div class="cmg" <c:if test="${SupplierID==null}">
+                 style="display: none;"
+                </c:if>><hr><br>
+                <h2>Chọn mệnh giá: </h2>
+                <form name=f1 method="get" action="addtocart">
+                    <input style="display: none" name="supplierID" value="${SupplierID}">
+                    <input style="display: none" name="phoneCard" value="phonecard">
                     <%  List<Price> listPrice = (List<Price>) request.getAttribute("price");
                         if (listPrice != null) {
                             for (int i = 0; i < listPrice.size(); i++) {%>
-                    <div class='cmg-gia'>
-                        <input class='div-gia1-none' style='display: none' class='div-gia1' value='<%=listPrice.get(i).getPrice()%>'>
-                        <input class='div-gia2-none' style='display: none' class='div-gia2' value='<%=(listPrice.get(i).getPrice() - listPrice.get(i).getPrice() * (listPrice.get(i).getDiscount()) / 100)%>'>
-                        <div class='div-gia1' ><%=new DecimalFormat("###,###,###").format(listPrice.get(i).getPrice())%>đ</div>
+                    <div class='cmg-gia' >
+                        <input class='div-gia1-none' style="display:none" value="<%=listPrice.get(i).getPrice()%>">
+                        <input class='div-gia2-none' style="display:none" value="<%=listPrice.get(i).getPrice() - listPrice.get(i).getPrice() * (listPrice.get(i).getDiscount()) / 100%>">
+                        <div class='div-gia1'><%=new DecimalFormat("###,###,###").format(listPrice.get(i).getPrice())%>đ</div>
                         <div class='div-gia2'>Giá: <%=new DecimalFormat("###,###,###").format(listPrice.get(i).getPrice() - listPrice.get(i).getPrice() * (listPrice.get(i).getDiscount()) / 100)%>đ</div>
                     </div><%
                             }
@@ -191,23 +206,26 @@
 
                     %>
 
-
-
+                    <c:if test="${notEnoughProduct!=null}">
+                        <script>
+                            alert("${notEnoughProduct}")
+                        </script>
+                    </c:if>
                     <br>
                     <div class="quantity-card">
                         <h3>Số lượng thẻ</h3>
                         <input onClick='decreaseCount(event, this)' class="btn-quan" type="button" value="-">
-                        <input class="inp-quan" type="text" value="1">
+                        <input name="quantity" class="inp-quan" type="text" value="1">
                         <input onClick='increaseCount(event, this)' class="btn-quan" type="button" value="+">
                     </div>
-                    <div class='add-Product'>
-                        <div class='Add'><img src="https://img.icons8.com/office/16/000000/add-shopping-cart.png" />Thêm vào giỏ hàng
-                        </div>
-                        <input type='submit' class='Buy' value='Mua Ngay'>
-                    </div>
 
-                </div>
-            </form>
+                    <div class='add-Product'>
+                        <input class='Add' type="submit" value="Thêm vào giỏ hàng" </input>
+                        <input class='Buy' type='submit' value='Mua Ngay' onclick="f1.action = 'buy'">
+                    </div>
+                </form>
+
+            </div>
         </div>
 
         <script type="text/javascript">
@@ -215,16 +233,17 @@
             for (let i = 0; i < cmg.length; i++) {
                 cmg[i].addEventListener('click', function () {
                     for (let j = 0; j < cmg.length; j++) {
-                        cmg[j].style.cssText = 'transform: scale(1.00)'
-                    }
-                    cmg[i].style.cssText = ' border: 1px solid rgb(76, 97, 20);cursor: pointer;transform: scale(1.08);box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;background-color: #f7f7e6;';
-
-                    for (let j = 0; j < cmg.length; j++) {
                         document.getElementsByClassName('div-gia1-none')[j].name = '';
                         document.getElementsByClassName('div-gia2-none')[j].name = '';
+                        cmg[j].classList.remove("active-price");
                     }
+                    cmg[i].classList.add("active-price");
+
                     document.getElementsByClassName('div-gia1-none')[i].name = 'price';
                     document.getElementsByClassName('div-gia2-none')[i].name = 'priceDiscount';
+                    console.log(document.getElementsByClassName('div-gia1')[i].name);
+                    console.log(document.getElementsByClassName('div-gia2')[i].name);
+
                 })
             }
 

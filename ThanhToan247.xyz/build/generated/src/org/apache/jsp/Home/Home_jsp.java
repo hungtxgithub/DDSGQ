@@ -60,10 +60,10 @@ public final class Home_jsp extends org.apache.jasper.runtime.HttpJspBase
       org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "../LeftNavbar-TopNavbar/TopNavbar.jsp", out, false);
       out.write("\n");
       out.write("            <div><div class=\"divflex1\">\n");
-      out.write("                    <div onclick=\"window.location.href = '#1'\" class=\"div-img-home\">\n");
+      out.write("                    <div onclick=\"window.location.href = 'gamecard'\" class=\"div-img-home\">\n");
       out.write("                        <img src=\"../img/02-57-00-09-07-2020-game.png\" alt=\"\">\n");
       out.write("                    </div>\n");
-      out.write("                    <div onclick=\"window.location.href = '#2'\" class=\"div-img-home\">\n");
+      out.write("                    <div onclick=\"window.location.href = 'phonecard'\" class=\"div-img-home\">\n");
       out.write("                        <img src=\"../img/08-10-47-15-09-2021-napthedt.png\" alt=\"\">\n");
       out.write("                    </div>\n");
       out.write("                </div>\n");

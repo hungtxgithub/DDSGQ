@@ -5,7 +5,7 @@
  */
 package controllers;
 
-import daos.DAO;
+import daos.UserDAO;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -67,7 +67,7 @@ public class ChangePassword extends HttpServlet {
         String password = request.getParameter("password");
         String rePassword = request.getParameter("rePassword");
         if (password.equals(rePassword)) {
-            DAO dao = new DAO();
+            UserDAO dao = new UserDAO();
             dao.updatePassword(request.getSession().getAttribute("username").toString(), password);
             request.setAttribute("changePassSuccess", "Ban da thay doi password thanh cong, vui long dang nhap!");
             request.getRequestDispatcher("Login-SignUp-ForgotPass/Login.jsp").forward(request, response);

@@ -5,7 +5,8 @@
  */
 package controllers;
 
-import daos.DAO;
+import daos.ProductDAO;
+import daos.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -14,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import models.Price;
 
 /**
@@ -37,9 +39,9 @@ public class GameCard extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
             try {
             response.setContentType("text/html;charset=UTF-8");
-            request.setAttribute("supplier", new DAO().getSupplierByCardTypeID(2));
+            request.setAttribute("supplier", new ProductDAO().getSupplierByCardTypeID(2));
             request.setAttribute("SupplierID", request.getParameter("SupplierID"));
-            List<Price> listPrice = new DAO().getPriceBySupplierID(Integer.parseInt(request.getParameter("SupplierID")));
+            List<Price> listPrice = new ProductDAO().getPriceBySupplierID(Integer.parseInt(request.getParameter("SupplierID")));
             request.setAttribute("price", listPrice);
             request.setAttribute("active", "style= 'transform: scale(1.2);border: 1px solid rgb(187, 224, 84);'");
             request.getRequestDispatcher("Product/GameCard.jsp").forward(request, response);

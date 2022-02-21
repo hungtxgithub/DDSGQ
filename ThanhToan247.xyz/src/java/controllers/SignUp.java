@@ -5,7 +5,7 @@
  */
 package controllers;
 
-import daos.DAO;
+import daos.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Random;
@@ -65,7 +65,7 @@ public class SignUp extends HttpServlet {
             request.setAttribute("email", email);
             String password = request.getParameter("password");
             String confirmpPassword = request.getParameter("confirm-password");
-            DAO dao = new DAO();
+            UserDAO dao = new UserDAO();
             if (username.equals("") || email.equals("") || password.equals("") || confirmpPassword.equals("")) {
                 request.setAttribute("errorSignUp", "Vui long nhap day du thong tin!");
             } else if (dao.checkUsername(username)) {
@@ -83,7 +83,7 @@ public class SignUp extends HttpServlet {
                 session.setAttribute("username-signup", username);
                 session.setAttribute("password-signup", password);
                 session.setAttribute("email-signup", email);
-                SendMail.send(email, "Code signup Thanhtoan247.xyz", "Your signup confirmation code is: " + codeRandom, "hungnthe153039@fpt.edu.vn", "Nthhldhfuhll1@");
+                SendMail.send(email, "Code signup Thanhtoan247.xyz", "Your signup confirmation code is: " + codeRandom, "hungnthe153039@fpt.edu.vn", "thaidz123");
                 request.getRequestDispatcher("Login-SignUp-ForgotPass/Login.jsp").forward(request, response);
             }
             request.getRequestDispatcher("Login-SignUp-ForgotPass/Login.jsp").forward(request, response);

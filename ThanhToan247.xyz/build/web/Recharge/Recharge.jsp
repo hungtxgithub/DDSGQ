@@ -23,13 +23,10 @@
 
             <div class="home-content">
             <jsp:include page="../LeftNavbar-TopNavbar/TopNavbar.jsp"></jsp:include>
-            <div>
-                <img style="position: absolute;width: 100%;z-index: -1;" src="https://cdn-www.vinid.net/2019/11/H%C6%B0%E1%BB%9Bng-d%E1%BA%ABn-n%E1%BA%A1p-ti%E1%BB%81n-%C4%91i%E1%BB%87n-tho%E1%BA%A1i-tr%C3%AAn-VinID.jpg" alt="">
-            </div>
-
+            <jsp:include page="RechargeForm.jsp"></jsp:include>
         </div>
 
-        <script src="js/javascript.js"></script>
+        <script src="../js/javascript.js"></script>
         <script>
             document.getElementById('nav2-animation').style.display = 'block'
         </script>

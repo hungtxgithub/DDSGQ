@@ -5,7 +5,7 @@
  */
 package controllers;
 
-import daos.DAO;
+import daos.UserDAO;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -58,9 +58,10 @@ public class Login extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html");
         try {
+            
             String username = request.getParameter("username");
             String password = request.getParameter("password");
-            DAO dao = new DAO();
+            UserDAO dao = new UserDAO();
             if (dao.checkLogin(username, password)) {
                 HttpSession session = request.getSession();
                 session.setAttribute("user", dao.getUserByUsername(username));

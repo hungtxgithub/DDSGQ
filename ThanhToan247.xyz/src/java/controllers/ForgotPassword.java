@@ -5,7 +5,7 @@
  */
 package controllers;
 
-import daos.DAO;
+import daos.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Random;
@@ -66,7 +66,7 @@ public class ForgotPassword extends HttpServlet {
             throws ServletException, IOException {
         String username = request.getParameter("username");
         request.setAttribute("signupmode", "sign-up-mode");
-        DAO dao = new DAO();
+        UserDAO dao = new UserDAO();
 
         if (dao.checkUsername(username)) {
             HttpSession session = request.getSession();

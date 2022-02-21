@@ -14,7 +14,7 @@ public class Price {
     private float price;
     private int supplierID;
     private float discount;
-
+    
     public Price() {
     }
 

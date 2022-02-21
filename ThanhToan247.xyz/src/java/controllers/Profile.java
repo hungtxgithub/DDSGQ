@@ -5,7 +5,7 @@
  */
 package controllers;
 
-import daos.DAO;
+import daos.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -36,7 +36,7 @@ public class Profile extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
-        session.setAttribute("user", new DAO().getUserByUsername(((User) session.getAttribute("user")).getUsername()));
+        session.setAttribute("user", new UserDAO().getUserByUsername(((User) session.getAttribute("user")).getUsername()));
         request.getRequestDispatcher("Profile/Profile.jsp").forward(request, response);
     }
 

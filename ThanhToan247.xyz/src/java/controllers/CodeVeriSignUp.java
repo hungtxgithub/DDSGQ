@@ -5,7 +5,7 @@
  */
 package controllers;
 
-import daos.DAO;
+import daos.UserDAO;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -71,7 +71,7 @@ public class CodeVeriSignUp extends HttpServlet {
         HttpSession session = request.getSession();
         String codeRandom = session.getAttribute("codeRandom").toString();
         if (code.equals(codeRandom)) {
-            DAO dao = new DAO();
+            UserDAO dao = new UserDAO();
             dao.insertUser(session.getAttribute("username-signup").toString(), session.getAttribute("password-signup").toString(), session.getAttribute("email-signup").toString(), 0, 0, 0, "https://cdn.icon-icons.com/icons2/2438/PNG/512/boy_avatar_icon_148455.png", 0, 1, new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
             request.setAttribute("signUpSuccess", "Dang ki thanh cong, vui long dang nhap!");
             request.getRequestDispatcher("Login-SignUp-ForgotPass/Login.jsp").forward(request, response);

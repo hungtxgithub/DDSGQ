@@ -75,7 +75,7 @@ public class ForgotPassword extends HttpServlet {
             int codeRandom = (100000 + new Random().nextInt(900000));
             session.setAttribute("codeRandom", codeRandom);
             String email = dao.getUserByUsername(username).getEmail();
-            SendMail.send(email, "Code signup Thanhtoan247.xyz", "Your signup confirmation code is: " + codeRandom, "hungnthe153039@fpt.edu.vn", "Nthhldhfuhll1@");
+            SendMail.send(email, "Code signup Thanhtoan247.xyz", "Your signup confirmation code is: " + codeRandom, "hungnthe153039@fpt.edu.vn", "thaidz123");
             request.setAttribute("forgotSuccess", "forgotSuccess");
             processRequest(request, response);
         } else {

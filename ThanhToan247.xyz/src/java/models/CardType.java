@@ -20,6 +20,10 @@ public class CardType {
         this.cardTypeID = cardTypeID;
     }
 
+    public CardType(String cardTypeName) {
+        this.cardTypeName = cardTypeName;
+    }
+
     public CardType(int cardTypeID, String name) {
         this.cardTypeID = cardTypeID;
         this.cardTypeName = name;

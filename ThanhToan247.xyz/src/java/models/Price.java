@@ -12,16 +12,24 @@ package models;
 public class Price {
     private int priceID;
     private float price;
-    private int supplierID;
+    private Supplier supplier;
     private float discount;
-    
+
     public Price() {
     }
 
-    public Price(int priceID, float price, int supplierID, float discount) {
+    public Price(float price, Supplier supplier, float discount) {
+        this.price = price;
+        this.supplier = supplier;
+        this.discount = discount;
+    }
+
+    
+    
+    public Price(int priceID, float price, Supplier supplier, float discount) {
         this.priceID = priceID;
         this.price = price;
-        this.supplierID = supplierID;
+        this.supplier = supplier;
         this.discount = discount;
     }
 
@@ -41,12 +49,12 @@ public class Price {
         this.price = price;
     }
 
-    public int getSupplierID() {
-        return supplierID;
+    public Supplier getSupplier() {
+        return supplier;
     }
 
-    public void setSupplierID(int supplierID) {
-        this.supplierID = supplierID;
+    public void setSupplier(Supplier supplier) {
+        this.supplier = supplier;
     }
 
     public float getDiscount() {
@@ -59,9 +67,8 @@ public class Price {
 
     @Override
     public String toString() {
-        return "Price{" + "priceID=" + priceID + ", price=" + price + ", supplierID=" + supplierID + ", discount=" + discount + '}';
+        return "Price{" + "priceID=" + priceID + ", price=" + price + ", supplier=" + supplier + ", discount=" + discount + '}';
     }
-
     
     
     

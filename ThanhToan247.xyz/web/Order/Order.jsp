@@ -28,7 +28,7 @@
         </div>
 
         <script src="js/javascript.js"></script>
-        <script>
+          <script>
             document.getElementById('nav3-animation').style.display = 'block'
         </script>
     </body>

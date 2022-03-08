@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import models.CardType;
 import models.Price;
 import models.Supplier;
 
@@ -25,12 +26,14 @@ public class ProductDAO extends DBContext {
             ps.setInt(1, CardTypeID);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                list.add(new Supplier(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4)));
+                list.add(new Supplier(rs.getInt(1), rs.getString(2), new CardType(rs.getString(3)), rs.getString(4)));
             }
         } catch (Exception e) {
         }
         return list;
     }
+
+    
 
     public List<Price> getPriceBySupplierID(int supplierID) {
         List<Price> list = new ArrayList<>();
@@ -39,7 +42,7 @@ public class ProductDAO extends DBContext {
             ps.setInt(1, supplierID);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                list.add(new Price(rs.getInt(1), rs.getFloat(2), rs.getInt(3), rs.getFloat(4)));
+                list.add(new Price(rs.getInt(1), rs.getFloat(2), new Supplier(rs.getInt(3)), rs.getFloat(4)));
             }
         } catch (Exception e) {
         }
@@ -73,7 +76,7 @@ public class ProductDAO extends DBContext {
         }
         return 0;
     }
-    
+
     public List<Integer> getProductIDByPriceID(int priceID) {
         List<Integer> listProductID = new ArrayList<Integer>();
         try {
@@ -87,9 +90,5 @@ public class ProductDAO extends DBContext {
         }
         return listProductID;
     }
-    
-    public static void main(String[] args) {
-        System.out.println(new ProductDAO().getProductIDByPriceID(85));
-    }
-    
+
 }

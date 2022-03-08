@@ -76,6 +76,9 @@ public final class Home_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                    </div>\n");
       out.write("                </div></div>\n");
       out.write("        </div>\n");
+      out.write("        <script>\n");
+      out.write("            document.getElementById('nav1-animation').style.display = 'block'\n");
+      out.write("        </script>\n");
       out.write("    </body>\n");
       out.write("</html>");
     } catch (Throwable t) {

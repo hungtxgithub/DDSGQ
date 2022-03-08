@@ -16,6 +16,7 @@
         <meta charset="UTF-8">
         <title>Home</title>
     </head>
+   
     <body>
         <jsp:include page="../LeftNavbar-TopNavbar/LeftNavbar.jsp"></jsp:include>
             <div class="home-content">

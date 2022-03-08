@@ -2,10 +2,6 @@ package daos;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.List;
-import models.Price;
-import models.Supplier;
 import models.User;
 
 public class UserDAO extends DBContext {

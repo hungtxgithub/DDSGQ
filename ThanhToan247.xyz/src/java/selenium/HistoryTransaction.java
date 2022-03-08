@@ -26,7 +26,7 @@ public class HistoryTransaction {
     public static void main(String[] args) throws InterruptedException {
         RechargeDAO historyRechargeDao = new RechargeDAO();
         UserDAO userDao = new UserDAO();
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\hungt\\Downloads\\selenium\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\HungNT\\Desktop\\Spring2022\\Spring2022\\PRJ301\\ProjectPRJ301\\ThanhToan247.xyz\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.get("https://vcbdigibank.vietcombank.com.vn/login");
         JavascriptExecutor js = (JavascriptExecutor) driver;

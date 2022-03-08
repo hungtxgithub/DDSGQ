@@ -5,6 +5,7 @@
  */
 package controllers;
 
+import daos.CartDAO;
 import daos.UserDAO;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import models.User;
 
 /**
  *
@@ -21,16 +23,6 @@ import javax.servlet.http.HttpSession;
 @WebServlet(name = "Login", urlPatterns = {"/login"})
 public class Login extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -58,14 +50,14 @@ public class Login extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html");
         try {
-            
             String username = request.getParameter("username");
             String password = request.getParameter("password");
-            UserDAO dao = new UserDAO();
-            if (dao.checkLogin(username, password)) {
+            if (new UserDAO().checkLogin(username, password)) {
                 HttpSession session = request.getSession();
-                session.setAttribute("user", dao.getUserByUsername(username));
-                session.setMaxInactiveInterval(60*60*60);
+                session.setAttribute("user", new UserDAO().getUserByUsername(username));
+                session.setAttribute("cartSize", new CartDAO().getCartByUserID(((User)session.getAttribute("user")).getUserID()).size());
+                session.setAttribute("cart", new CartDAO().getCartByUserID(((User)session.getAttribute("user")).getUserID()));
+                session.setMaxInactiveInterval(60*10);  
                 response.sendRedirect("home");
             } else {
                 request.setAttribute("errorLogin", "Username or password incorrect!");
@@ -74,15 +66,5 @@ public class Login extends HttpServlet {
         } catch (Exception e) {
         }
     }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
-
+  
 }

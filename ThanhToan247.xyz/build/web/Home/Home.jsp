@@ -20,7 +20,8 @@
                     <div onclick="window.location.href = 'gamecard'" class="div-img-home">
                         <img src="../img/02-57-00-09-07-2020-game.png" alt="">
                     </div>
-                    <div onclick="window.location.href = 'phonecard'" class="div-img-home">
+                    <div onclick="window.location.href = 'phone\n\
+card'" class="div-img-home">
                         <img src="../img/08-10-47-15-09-2021-napthedt.png" alt="">
                     </div>
                 </div>
@@ -33,5 +34,8 @@
                     </div>
                 </div></div>
         </div>
+        <script>
+            document.getElementById('nav1-animation').style.display = 'block'
+        </script>
     </body>
 </html>

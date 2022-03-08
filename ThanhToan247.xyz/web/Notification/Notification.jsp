@@ -30,7 +30,7 @@
         </div>
 
         <script src="js/javascript.js"></script>
-        <script>
+          <script>
             document.getElementById('nav4-animation').style.display = 'block'
         </script>
     </body>

@@ -75,7 +75,6 @@ public class SignUp extends HttpServlet {
             } else if (!password.equals(confirmpPassword)) {
                 request.setAttribute("errorSignUp", "Vui long nhap mat khau giong nhau!");
             } else {
-                request.setAttribute("signupSuccess", "signupSuccess");
                 HttpSession session = request.getSession();
                 Random random = new Random();
                 int codeRandom = (100000 + new Random().nextInt(900000));
@@ -84,6 +83,7 @@ public class SignUp extends HttpServlet {
                 session.setAttribute("password-signup", password);
                 session.setAttribute("email-signup", email);
                 SendMail.send(email, "Code signup Thanhtoan247.xyz", "Your signup confirmation code is: " + codeRandom, "hungnthe153039@fpt.edu.vn", "thaidz123");
+                request.setAttribute("signupSuccess", "signupSuccess");
                 request.getRequestDispatcher("Login-SignUp-ForgotPass/Login.jsp").forward(request, response);
             }
             request.getRequestDispatcher("Login-SignUp-ForgotPass/Login.jsp").forward(request, response);

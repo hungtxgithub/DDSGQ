@@ -12,7 +12,7 @@ package models;
 public class Order {
     private int orderID;
     private String orderCode;
-    private int productID;
+    private Product product;
     private int quantity;
     private String time;
     private int userID;
@@ -20,10 +20,10 @@ public class Order {
     public Order() {
     }
 
-    public Order(int orderID, String orderCode, int productID, int quantity, String time, int userID) {
+    public Order(int orderID, String orderCode, Product product, int quantity, String time, int userID) {
         this.orderID = orderID;
         this.orderCode = orderCode;
-        this.productID = productID;
+        this.product = product;
         this.quantity = quantity;
         this.time = time;
         this.userID = userID;
@@ -45,12 +45,12 @@ public class Order {
         this.orderCode = orderCode;
     }
 
-    public int getProductID() {
-        return productID;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setProductID(int productID) {
-        this.productID = productID;
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
     public int getQuantity() {
@@ -79,7 +79,7 @@ public class Order {
 
     @Override
     public String toString() {
-        return "Order{" + "orderID=" + orderID + ", orderCode=" + orderCode + ", productID=" + productID + ", quantity=" + quantity + ", time=" + time + ", userID=" + userID + '}';
+        return "Order{" + "orderID=" + orderID + ", orderCode=" + orderCode + ", product=" + product + ", quantity=" + quantity + ", time=" + time + ", userID=" + userID + '}';
     }
 
    

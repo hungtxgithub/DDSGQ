@@ -7,7 +7,6 @@ package controllers;
 
 import daos.UserDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -35,9 +34,15 @@ public class Profile extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        HttpSession session = request.getSession();
-        session.setAttribute("user", new UserDAO().getUserByUsername(((User) session.getAttribute("user")).getUsername()));
-        request.getRequestDispatcher("Profile/Profile.jsp").forward(request, response);
+        try {
+            HttpSession session = request.getSession();
+            session.setAttribute("user", new UserDAO().getUserByUsername(((User) session.getAttribute("user")).getUsername()));
+            request.getRequestDispatcher("Profile/Profile.jsp").forward(request, response);
+        } catch (Exception e) {
+            request.setAttribute("errorLogin", "Vui lòng đăng nhập!");
+            request.getRequestDispatcher("Login-SignUp-ForgotPass/Login.jsp").forward(request, response);
+        }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

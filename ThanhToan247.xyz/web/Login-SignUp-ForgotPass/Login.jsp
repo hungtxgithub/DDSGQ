@@ -80,7 +80,7 @@
                                         <i class="fas fa-lock"></i>
                                         <input type="password" name="confirm-password" placeholder="Confirm Password" />
                                     </div>
-                                    <input type="submit" class="btn" value="Sign up" />
+                                    <input type="submit" name="action" class="btn" value="Sign up" />
                                     <p class="social-text">${errorSignUp}</p>
                                 </form>
                             </c:if>
@@ -92,7 +92,7 @@
                                         <i class="fas fa-lock"></i>
                                         <input type="text" name="code-signup" placeholder="Your code" />
                                     </div>
-                                    <input type="submit" class="btn" value="Send code" />
+                                    <input type="submit" name="action" class="btn" value="Send code" />
                                     <p class="social-text">${errorSignUp}</p>
                                 </form>
                             </c:if>

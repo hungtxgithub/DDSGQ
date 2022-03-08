@@ -46,6 +46,7 @@ public class Notification extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setAttribute("displayBlock4", "style='display: block'");
         processRequest(request, response);
     }
 

@@ -35,6 +35,8 @@ public class Logout extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
         session.setAttribute("user", null);
+        session.setAttribute("cart", null);
+        session.setAttribute("cartSize", null);
         response.sendRedirect("login");
     }
 

@@ -13,16 +13,25 @@ public class Product {
     private int productID;
     private String seriCode;
     private String pinCode;
-    private int priceID;
+    private Price price;
 
     public Product() {
     }
 
-    public Product(int productID, String seriCode, String pinCode, int priceID) {
+    public Product(int productID, Price price) {
+        this.productID = productID;
+        this.price = price;
+    }
+
+    public Product(Price price) {
+        this.price = price;
+    }
+
+    public Product(int productID, String seriCode, String pinCode, Price price) {
         this.productID = productID;
         this.seriCode = seriCode;
         this.pinCode = pinCode;
-        this.priceID = priceID;
+        this.price = price;
     }
 
     public int getProductID() {
@@ -49,19 +58,20 @@ public class Product {
         this.pinCode = pinCode;
     }
 
-    public int getPriceID() {
-        return priceID;
+    public Price getPrice() {
+        return price;
     }
 
-    public void setPriceID(int priceID) {
-        this.priceID = priceID;
+    public void setPrice(Price price) {
+        this.price = price;
     }
 
     @Override
     public String toString() {
-        return "Product{" + "productID=" + productID + ", seriCode=" + seriCode + ", pinCode=" + pinCode + ", priceID=" + priceID + '}';
+        return "Product{" + "productID=" + productID + ", seriCode=" + seriCode + ", pinCode=" + pinCode + ", price=" + price + '}';
     }
 
-   
+    
+    
     
 }

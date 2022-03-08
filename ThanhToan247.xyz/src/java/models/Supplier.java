@@ -12,16 +12,26 @@ package models;
 public class Supplier {
     private int supplierID;
     private String supplierName;
-    private int cardTypeID;
+    private CardType cardType;
     private String image;
 
     public Supplier() {
     }
 
-    public Supplier(int supplierID, String supplierName, int cardTypeID, String image) {
+    public Supplier(int supplierID) {
+        this.supplierID = supplierID;
+    }
+
+    public Supplier(String supplierName, CardType cardType, String image) {
+        this.supplierName = supplierName;
+        this.cardType = cardType;
+        this.image = image;
+    }
+
+    public Supplier(int supplierID, String supplierName, CardType cardType, String image) {
         this.supplierID = supplierID;
         this.supplierName = supplierName;
-        this.cardTypeID = cardTypeID;
+        this.cardType = cardType;
         this.image = image;
     }
 
@@ -41,12 +51,12 @@ public class Supplier {
         this.supplierName = supplierName;
     }
 
-    public int getCardTypeID() {
-        return cardTypeID;
+    public CardType getCardType() {
+        return cardType;
     }
 
-    public void setCardTypeID(int cardTypeID) {
-        this.cardTypeID = cardTypeID;
+    public void setCardType(CardType cardType) {
+        this.cardType = cardType;
     }
 
     public String getImage() {
@@ -59,10 +69,9 @@ public class Supplier {
 
     @Override
     public String toString() {
-        return "Supplier{" + "supplierID=" + supplierID + ", supplierName=" + supplierName + ", cardTypeID=" + cardTypeID + ", image=" + image + '}';
+        return "Supplier{" + "supplierID=" + supplierID + ", supplierName=" + supplierName + ", cardType=" + cardType + ", image=" + image + '}';
     }
 
-   
     
     
 }

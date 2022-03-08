@@ -1,0 +1,248 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+nav {
+    position: relative;
+    border-radius: 8px;
+    font-size: 0;
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, .1);
+}
+
+nav a {
+    font-size: 17px;
+    text-transform: uppercase;
+    color: white;
+    text-decoration: none;
+    line-height: 50px;
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    text-align: center;
+}
+
+nav .animation {
+    position: absolute;
+    height: 100%;
+    height: 5px;
+    /*top: 0;*/
+    bottom: 0;
+    z-index: 0;
+    background: whitesmoke;
+    border-radius: 8px;
+    transition: all .5s ease 0s;
+}
+
+nav a:nth-child(1) {
+    width: 100px;
+}
+
+nav a:nth-child(1):hover~.animation {
+    width: 100px;
+    left: 0;
+}
+
+nav a:nth-child(2) {
+    width: 110px;
+}
+
+nav a:nth-child(2):hover~.animation {
+    width: 110px;
+    left: 100px;
+}
+
+nav a:nth-child(3) {
+    width: 100px;
+}
+
+nav a:nth-child(3):hover~.animation {
+    width: 100px;
+    left: 210px;
+}
+
+nav a:nth-child(4) {
+    width: 160px;
+}
+
+nav a:nth-child(4):hover~.animation {
+    width: 160px;
+    left: 310px;
+}
+
+nav a:nth-child(5) {
+    width: 120px;
+}
+
+nav a:nth-child(5):hover~.animation {
+    width: 120px;
+    left: 470px;
+}
+
+
+.navdiv2 {
+    display: inline-block;
+}
+
+.btn-login {
+    background: whitesmoke;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px 30px;
+    text-align: center;
+    margin: 0 auto;
+    cursor: pointer;
+    font-size: 17px;
+}
+
+.div-login {
+    text-align: center;
+}
+
+#nav1-animation {
+    display: none;
+    border-radius: 8px;
+    height: 5px;
+    width: 100px;
+    background-color: white;
+    position: absolute;
+    margin-top: -5px;
+}
+
+#nav2-animation {
+    display: none;
+    border-radius: 8px;
+    height: 5px;
+    width: 110px;
+    margin-left: 100px;
+    background-color: white;
+    position: absolute;
+    margin-top: -5px;
+}
+
+#nav3-animation {
+    display: none;
+    border-radius: 8px;
+    height: 5px;
+    width: 100px;
+    margin-left: 210px;
+    background-color: white;
+    position: absolute;
+
+    margin-top: -5px;
+}
+
+#nav4-animation {
+    display: none;
+    border-radius: 8px;
+    height: 5px;
+    width: 160px;
+    margin-left: 310px;
+    background-color: white;
+    position: absolute;
+    margin-top: -5px;
+}
+
+#nav5-animation {
+    display: none;
+    border-radius: 8px;
+    height: 5px;
+    width: 120px;
+    margin-left: 470px;
+    background-color: white;
+    position: absolute;
+
+    margin-top: -5px;
+}
+
+.img-avatar{
+    margin: -13px 0px;
+    height: 38px;
+    border-radius: 12px;
+    margin-left: -15px;
+}
+
+.navbardiv{
+    box-shadow: 3px 3px 10px 1px #423631;
+    background: #11101d;
+    position: relative;
+    z-index: 10;
+    padding: 10px 0;
+    display: flex;
+}
+.navdiv{
+    width: 75%;
+    text-align: center;
+}
+.container-icon{
+    text-align: center;
+    width: 9%;
+    align-items: center;
+    margin-top: 8px;
+}
+
+.dropbtn {
+    color: white;
+    display: inline-block;
+    border-radius: 30px;
+    background-color: #112c39;
+    opacity: 1;
+    padding: 8px 15px;
+}
+
+.dropdown {
+    margin-top: 6px;
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, .1);
+    width: 100%;
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #134c68;}
+
+.square {
+    width: 20px;
+    height: 20px;
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -webkit-transform: rotate(
+        45deg
+        );
+    transform: rotate(
+        45deg
+        );
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -o-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -ms-webkit-radius: 4px;
+    zoom: 1;
+    position: absolute;
+    top: -7px;
+    left: calc(50% - 9px);
+    background: #fff;
+}
+.icon-cart{
+    color: white;
+    font-size: xx-large;
+}

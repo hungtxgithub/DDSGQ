@@ -5,13 +5,17 @@
  */
 package controllers;
 
+import daos.CartDAO;
+import daos.ProductDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import models.User;
 
 /**
  *
@@ -47,7 +51,40 @@ public class Cart extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        HttpSession session = request.getSession();
+        CartDAO dao = new CartDAO();
+        
+        //Add to cart
+        if (request.getParameter("priceID") != null) {
+            try {
+                int priceID = Integer.parseInt(request.getParameter("priceID"));
+                int quantity = Integer.parseInt(request.getParameter("quantity"));
+                int quantityStock = new ProductDAO().getProductIDByPriceID(priceID).size();
+
+                if (quantity > quantityStock) {
+                    session.setAttribute("notEnoughProduct", "Số lượng sản phẩm không đủ! Hiện còn: " + quantityStock);
+                    response.sendRedirect(session.getAttribute("urlCurrent").toString() + "?supplierID=" + request.getParameter("supplierID") + "&priceID=" + priceID);
+                } else {
+                    if (quantity <= quantityStock) {
+                        List<models.Cart> cartByUserID = dao.getCartByUserID(((User) session.getAttribute("user")).getUserID());
+                        dao.insertCart(priceID, quantity, ((User) session.getAttribute("user")).getUserID());
+                        session.setAttribute("cart", dao.getCartByUserID(((User) session.getAttribute("user")).getUserID()));
+                    }
+                    response.sendRedirect(session.getAttribute("urlCurrent").toString() + "?supplierID=" + request.getParameter("supplierID") + "&priceID=" + priceID);
+                }
+            } catch (Exception e) {
+                response.sendRedirect(session.getAttribute("urlCurrent").toString() + "?supplierID=" + request.getParameter("supplierID"));
+            }
+
+        }
+        //Delete cart by cartID
+        else if (request.getParameter("deleteid") != null) {
+            dao.deleteCart(Integer.parseInt(request.getParameter("deleteid")));
+            session.setAttribute("cart", dao.getCartByUserID(((User) session.getAttribute("user")).getUserID()));
+            response.sendRedirect("cart");
+        } else {
+            request.getRequestDispatcher("Cart/Cart.jsp").forward(request, response);
+        }
     }
 
     /**

@@ -55,7 +55,6 @@ public class Login extends HttpServlet {
             if (new UserDAO().checkLogin(username, password)) {
                 HttpSession session = request.getSession();
                 session.setAttribute("user", new UserDAO().getUserByUsername(username));
-                session.setAttribute("cartSize", new CartDAO().getCartByUserID(((User)session.getAttribute("user")).getUserID()).size());
                 session.setAttribute("cart", new CartDAO().getCartByUserID(((User)session.getAttribute("user")).getUserID()));
                 session.setMaxInactiveInterval(60*10);  
                 response.sendRedirect("home");

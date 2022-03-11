@@ -12,29 +12,24 @@ package models;
 public class Cart {
 
     private int cartID;
-    private Product product;
+    private Price price;
     private int quantity;
     private int userID;
 
     public Cart() {
     }
 
-    public Cart(int cartID, Product product, int quantity, int userID) {
+    public Cart(int cartID, Price price, int quantity) {
         this.cartID = cartID;
-        this.product = product;
+        this.price = price;
+        this.quantity = quantity;
+    }
+
+    public Cart(int cartID, Price price, int quantity, int userID) {
+        this.cartID = cartID;
+        this.price = price;
         this.quantity = quantity;
         this.userID = userID;
-    }
-
-    public Cart(Product product, int quantity) {
-        this.product = product;
-        this.quantity = quantity;
-    }
-
-    public Cart(int cartID, Product product, int quantity) {
-        this.cartID = cartID;
-        this.product = product;
-        this.quantity = quantity;
     }
 
     public int getCartID() {
@@ -45,12 +40,12 @@ public class Cart {
         this.cartID = cartID;
     }
 
-    public Product getProduct() {
-        return product;
+    public Price getPrice() {
+        return price;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setPrice(Price price) {
+        this.price = price;
     }
 
     public int getQuantity() {
@@ -71,7 +66,11 @@ public class Cart {
 
     @Override
     public String toString() {
-        return "Cart{" + "cartID=" + cartID + ", product=" + product + ", quantity=" + quantity + ", userID=" + userID + '}';
+        return "Cart{" + "cartID=" + cartID + ", price=" + price + ", quantity=" + quantity + ", userID=" + userID + '}';
     }
 
+    
+
+    
+    
 }

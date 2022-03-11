@@ -564,7 +564,7 @@
             <div class="header__cart">
                 <div class="header__cart-wrap">
                     <i class='header__cart-icon icon-cart bx bxs-cart'></i>
-                    <span class="header__cart-notice">${cartSize==null?"0":cartSize}</span>
+                    <span class="header__cart-notice">${cart==null?"0":cart.size()}</span>
                     <!-- No cart : header__cart-list--no-cart -->
                     <div class="header__cart-list ">
 
@@ -586,14 +586,14 @@
                             <ul class="header__cart-list-item">
                                 <c:forEach items="${cart}" var="c">
                                     <li class="header__cart-item">
-                                        <img src="${c.product.price.supplier.image}" alt="" class="header__cart-img" />
+                                        <img src="${c.price.supplier.image}" alt="" class="header__cart-img" />
                                         <div class="header__cart-item-info">
                                             <div class="header__cart-item-head">
                                                 <h5 class="header__cart-item-name">
-                                                    Thẻ ${c.product.price.supplier.supplierName}
+                                                    Thẻ ${c.price.supplier.supplierName}
                                                 </h5>
                                                 <div class="header__cart-item-price-wrap">
-                                                    <span class="header__cart-item-price">${c.product.price.price}</span>
+                                                    <span class="header__cart-item-price">${c.price.price}</span>
                                                     <span class="header__cart-item-multiply">x</span>
                                                     <span class="header__cart-item-qnt">${c.quantity}</span>
                                                 </div>
@@ -628,11 +628,9 @@
                 </div>
             </c:if>
 
-
             <c:if test="${sessionScope.user==null}">
                 <div class="div-login" onclick="window.location.href = '/login'"><button class="btn-login">LOGIN</button></div>
             </c:if>
-
         </div>
 
         <script src="../js/topnavbar.js"></script>

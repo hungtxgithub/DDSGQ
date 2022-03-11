@@ -22,9 +22,8 @@ public class Supplier {
         this.supplierID = supplierID;
     }
 
-    public Supplier(String supplierName, CardType cardType, String image) {
+    public Supplier(String supplierName, String image) {
         this.supplierName = supplierName;
-        this.cardType = cardType;
         this.image = image;
     }
 

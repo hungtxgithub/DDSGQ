@@ -33,8 +33,6 @@ public class ProductDAO extends DBContext {
         return list;
     }
 
-    
-
     public List<Price> getPriceBySupplierID(int supplierID) {
         List<Price> list = new ArrayList<>();
         try {
@@ -90,5 +88,6 @@ public class ProductDAO extends DBContext {
         }
         return listProductID;
     }
+
 
 }

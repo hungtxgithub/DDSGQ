@@ -1,3 +1,4 @@
+
 <%-- 
     Document   : Product
     Created on : Jan 23, 2022, 5:43:49 PM
@@ -180,31 +181,25 @@
             <div class="cncc">
                 <h2>Chọn nhà cung cấp: </h2>
                 <c:forEach items="${supplier}" var="o">
-                    <img <c:if test="${o.supplierID==SupplierID}">${active}</c:if> onclick="window.location = '?SupplierID=${o.supplierID}';" src="${o.image}" alt=''>
+                    <img <c:if test="${o.supplierID==supplierID}">${active}</c:if> onclick="window.location = '?supplierID=${o.supplierID}';" src="${o.image}" alt=''>
                 </c:forEach>
             </div>
 
 
-            <div class="cmg" <c:if test="${SupplierID==null}">
+            <div class="cmg" <c:if test="${supplierID==null}">
                  style="display: none;"
                 </c:if>><hr><br>
                 <h2>Chọn mệnh giá: </h2>
-                <form name=f1 method="get" action="addtocart">
-                    <input style="display: none" name="supplierID" value="${SupplierID}">
-                    <input style="display: none" name="phoneCard" value="phonecard">
-                    <%  List<Price> listPrice = (List<Price>) request.getAttribute("price");
-                        if (listPrice != null) {
-                            for (int i = 0; i < listPrice.size(); i++) {%>
-                    <div class='cmg-gia' >
-                        <input class='div-gia1-none' style="display:none" value="<%=listPrice.get(i).getPrice()%>">
-                        <input class='div-gia2-none' style="display:none" value="<%=listPrice.get(i).getPrice() - listPrice.get(i).getPrice() * (listPrice.get(i).getDiscount()) / 100%>">
-                        <div class='div-gia1'><%=new DecimalFormat("###,###,###").format(listPrice.get(i).getPrice())%>đ</div>
-                        <div class='div-gia2'>Giá: <%=new DecimalFormat("###,###,###").format(listPrice.get(i).getPrice() - listPrice.get(i).getPrice() * (listPrice.get(i).getDiscount()) / 100)%>đ</div>
-                    </div><%
-                            }
-                        }
+                <form name=f1  method="get" action="cart">
+                    <input style="display: none" name="supplierID" value="${supplierID}">
+                    <input style="display: none" name="priceID" value="${priceID}">
+                    <c:forEach items="${price}" var="p">
+                        <div <c:if test="${p.priceID==priceID}">${activePrice}</c:if> class='cmg-gia' onclick="window.location = '?supplierID=${supplierID}&priceID=${p.priceID}'">
+                            <div class='div-gia1'>${p.price}</div>
+                            <div class='div-gia2'>Giá: ${p.price-(p.price*p.discount/100)}</div>
+                        </div>
+                    </c:forEach>
 
-                    %>
 
                     <c:if test="${notEnoughProduct!=null}">
                         <script>
@@ -221,7 +216,7 @@
 
                     <div class='add-Product'>
                         <input class='Add' type="submit" value="Thêm vào giỏ hàng" </input>
-                        <input class='Buy' type='submit' value='Mua Ngay' onclick="f1.action = 'buy'">
+                        <input class='Buy' type='submit' value='Mua Ngay' onclick="f1.action = 'addorder'">
                     </div>
                 </form>
 
@@ -229,23 +224,6 @@
         </div>
 
         <script type="text/javascript">
-            let cmg = document.getElementsByClassName('cmg-gia');
-            for (let i = 0; i < cmg.length; i++) {
-                cmg[i].addEventListener('click', function () {
-                    for (let j = 0; j < cmg.length; j++) {
-                        document.getElementsByClassName('div-gia1-none')[j].name = '';
-                        document.getElementsByClassName('div-gia2-none')[j].name = '';
-                        cmg[j].classList.remove("active-price");
-                    }
-                    cmg[i].classList.add("active-price");
-
-                    document.getElementsByClassName('div-gia1-none')[i].name = 'price';
-                    document.getElementsByClassName('div-gia2-none')[i].name = 'priceDiscount';
-                    console.log(document.getElementsByClassName('div-gia1')[i].name);
-                    console.log(document.getElementsByClassName('div-gia2')[i].name);
-
-                })
-            }
 
             function increaseCount(a, b) {
                 var input = b.previousElementSibling;

@@ -8,6 +8,7 @@ package controllers;
 import daos.CartDAO;
 import daos.ProductDAO;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -53,7 +54,7 @@ public class Cart extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         CartDAO dao = new CartDAO();
-        
+
         //Add to cart
         if (request.getParameter("priceID") != null) {
             try {
@@ -67,7 +68,15 @@ public class Cart extends HttpServlet {
                 } else {
                     if (quantity <= quantityStock) {
                         List<models.Cart> cartByUserID = dao.getCartByUserID(((User) session.getAttribute("user")).getUserID());
-                        dao.insertCart(priceID, quantity, ((User) session.getAttribute("user")).getUserID());
+                        List<Integer> list = new ArrayList<>();
+                        for (models.Cart cart : cartByUserID) {
+                            list.add(cart.getPrice().getPriceID());
+                        }
+                        if (list.contains(priceID)) {
+                            dao.updateQuantityByPriceID(quantity+dao.getQuantityByPriceID(priceID), priceID);
+                        } else {
+                            dao.insertCart(priceID, quantity, ((User) session.getAttribute("user")).getUserID());
+                        }
                         session.setAttribute("cart", dao.getCartByUserID(((User) session.getAttribute("user")).getUserID()));
                     }
                     response.sendRedirect(session.getAttribute("urlCurrent").toString() + "?supplierID=" + request.getParameter("supplierID") + "&priceID=" + priceID);
@@ -76,8 +85,7 @@ public class Cart extends HttpServlet {
                 response.sendRedirect(session.getAttribute("urlCurrent").toString() + "?supplierID=" + request.getParameter("supplierID"));
             }
 
-        }
-        //Delete cart by cartID
+        } //Delete cart by cartID
         else if (request.getParameter("deleteid") != null) {
             dao.deleteCart(Integer.parseInt(request.getParameter("deleteid")));
             session.setAttribute("cart", dao.getCartByUserID(((User) session.getAttribute("user")).getUserID()));

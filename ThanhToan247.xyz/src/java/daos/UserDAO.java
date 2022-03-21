@@ -76,11 +76,27 @@ public class UserDAO extends DBContext {
 
     public void updateRemainingMoney(int userID, float money) {
         try {
-            PreparedStatement ps = getConnection().prepareStatement("UPDATE dbo.[User] SET RemainingMoney = RemainingMoney+? WHERE userID = ?");
+            PreparedStatement ps = getConnection().prepareStatement("UPDATE dbo.[User] SET RemainingMoney = ? WHERE userID = ?");
             ps.setFloat(1, money);
             ps.setInt(2, userID);
             ps.executeUpdate();
         } catch (Exception e) {
         }
+    }
+
+    public void updateEmailByUsername(String email, String username) {
+        try {
+            PreparedStatement ps = getConnection().prepareStatement("UPDATE [dbo].[User]\n"
+                    + "   SET [Email] = ?\n"
+                    + " WHERE Username = ?");
+            ps.setString(1, email);
+            ps.setString(2, username);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
+    public static void main(String[] args) {
+        new UserDAO().updateEmailByUsername("hungnthe153039@fpt.edu.com", "admin");
     }
 }

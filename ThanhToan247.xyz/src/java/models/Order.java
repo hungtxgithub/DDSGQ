@@ -12,21 +12,39 @@ package models;
 public class Order {
     private int orderID;
     private String orderCode;
-    private Product product;
+    private Price price;
     private int quantity;
+    private float priceOrder;
     private String time;
     private int userID;
 
     public Order() {
     }
 
-    public Order(int orderID, String orderCode, Product product, int quantity, String time, int userID) {
-        this.orderID = orderID;
+    public Order(String orderCode, Price price, int quantity, String time) {
         this.orderCode = orderCode;
-        this.product = product;
+        this.price = price;
         this.quantity = quantity;
         this.time = time;
+    }
+
+    public Order(int orderID, String orderCode, Price price, int quantity, float priceOrder, String time, int userID) {
+        this.orderID = orderID;
+        this.orderCode = orderCode;
+        this.price = price;
+        this.quantity = quantity;
+        this.priceOrder = priceOrder;
+        this.time = time;
         this.userID = userID;
+    }
+
+    public Order(int orderID, String orderCode, Price price, int quantity, float priceOrder, String time) {
+        this.orderID = orderID;
+        this.orderCode = orderCode;
+        this.price = price;
+        this.quantity = quantity;
+        this.priceOrder = priceOrder;
+        this.time = time;
     }
 
     public int getOrderID() {
@@ -45,12 +63,12 @@ public class Order {
         this.orderCode = orderCode;
     }
 
-    public Product getProduct() {
-        return product;
+    public Price getPrice() {
+        return price;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setPrice(Price price) {
+        this.price = price;
     }
 
     public int getQuantity() {
@@ -59,6 +77,14 @@ public class Order {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public float getPriceOrder() {
+        return priceOrder;
+    }
+
+    public void setPriceOrder(float priceOrder) {
+        this.priceOrder = priceOrder;
     }
 
     public String getTime() {
@@ -79,10 +105,9 @@ public class Order {
 
     @Override
     public String toString() {
-        return "Order{" + "orderID=" + orderID + ", orderCode=" + orderCode + ", product=" + product + ", quantity=" + quantity + ", time=" + time + ", userID=" + userID + '}';
+        return "Order{" + "orderID=" + orderID + ", orderCode=" + orderCode + ", price=" + price + ", quantity=" + quantity + ", priceOrder=" + priceOrder + ", time=" + time + ", userID=" + userID + '}';
     }
 
-   
     
     
 }

@@ -67,7 +67,7 @@ public class Cart extends HttpServlet {
                     response.sendRedirect(session.getAttribute("urlCurrent").toString() + "?supplierID=" + request.getParameter("supplierID") + "&priceID=" + priceID);
                 } else {
                     if (quantity <= quantityStock) {
-                        List<models.Cart> cartByUserID = dao.getCartByUserID(((User) session.getAttribute("user")).getUserID());
+                        List<models.Cart> cartByUserID = dao.displayCartByUserID(((User) session.getAttribute("user")).getUserID());
                         List<Integer> list = new ArrayList<>();
                         for (models.Cart cart : cartByUserID) {
                             list.add(cart.getPrice().getPriceID());
@@ -77,7 +77,7 @@ public class Cart extends HttpServlet {
                         } else {
                             dao.insertCart(priceID, quantity, ((User) session.getAttribute("user")).getUserID());
                         }
-                        session.setAttribute("cart", dao.getCartByUserID(((User) session.getAttribute("user")).getUserID()));
+                        session.setAttribute("cart", dao.displayCartByUserID(((User) session.getAttribute("user")).getUserID()));
                     }
                     response.sendRedirect(session.getAttribute("urlCurrent").toString() + "?supplierID=" + request.getParameter("supplierID") + "&priceID=" + priceID);
                 }
@@ -88,11 +88,12 @@ public class Cart extends HttpServlet {
         } //Delete cart by cartID
         else if (request.getParameter("deleteid") != null) {
             dao.deleteCart(Integer.parseInt(request.getParameter("deleteid")));
-            session.setAttribute("cart", dao.getCartByUserID(((User) session.getAttribute("user")).getUserID()));
+            session.setAttribute("cart", dao.displayCartByUserID(((User) session.getAttribute("user")).getUserID()));
             response.sendRedirect("cart");
         } else {
             request.getRequestDispatcher("Cart/Cart.jsp").forward(request, response);
         }
+        session.setAttribute("moneyNotEnough", null);
     }
 
     /**

@@ -22,6 +22,10 @@ public class Supplier {
         this.supplierID = supplierID;
     }
 
+    public Supplier(String supplierName) {
+        this.supplierName = supplierName;
+    }
+
     public Supplier(String supplierName, String image) {
         this.supplierName = supplierName;
         this.image = image;

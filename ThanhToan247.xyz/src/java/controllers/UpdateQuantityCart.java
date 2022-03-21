@@ -5,6 +5,8 @@
  */
 package controllers;
 
+import daos.CartDAO;
+import daos.ProductDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -12,13 +14,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import models.User;
 
 /**
  *
- * @author hungt
+ * @author HungNT
  */
-@WebServlet(name = "ordertest", urlPatterns = {"/ordertest"})
-public class ordertest extends HttpServlet {
+@WebServlet(name = "UpdateQuantityCart", urlPatterns = {"/updatequantitycart"})
+public class UpdateQuantityCart extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,21 +36,11 @@ public class ordertest extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ordertest</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ordertest at " + request.getParameter("price") + "</h1>");
-            out.println("<h1>Servlet ordertest at " + request.getParameter("priceDiscount") + "</h1>");
-            out.println("<h1>Servlet ordertest at " + request.getParameter("supplierID") + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+        HttpSession session = request.getSession();
+        new CartDAO().updateQuantityByCartID(Integer.parseInt(request.getParameter("quantity")), Integer.parseInt(request.getParameter("cartID")));
+//        session.setAttribute("", new ProductDAO().getProductIDByPriceID(priceID).size(););
+        session.setAttribute("cart", new CartDAO().displayCartByUserID(((User) session.getAttribute("user")).getUserID()));
+        response.sendRedirect("cart");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

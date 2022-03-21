@@ -145,46 +145,7 @@
             var inpQuan = document.getElementsByClassName('inp-quan');
 
             document.getElementById('nav1-animation').style.display = 'block'
-            function increaseCount(a, b) {
-                var input = b.previousElementSibling;
-                var value = parseInt(input.value, 10);
-                value = isNaN(value) ? 0 : value;
-                value++;
-                input.value = value;
-                for (var i = 0; i < unitPrice.length; i++) {
-                    cartTotalPrice[i].innerHTML = new Intl.NumberFormat('vi-VN', {style: 'currency', currency: 'VND'}).format((unitPrice[i].innerHTML).replace(/&nbsp;₫|\./gm, '') * inpQuan[i].value)
-                }
-                a = 0;
-                for (var i = 0; i < cartTotalPrice.length; i++) {
-                    a += (cartTotalPrice[i].innerHTML).replace(/&nbsp;₫|\./gm, '') * 1;
-                    document.getElementById('tongTien').innerHTML = new Intl.NumberFormat('vi-VN', {style: 'currency', currency: 'VND'}).format(a);
-                }
-                document.getElementById('tongTienThanhToan').innerHTML = new Intl.NumberFormat('vi-VN', {style: 'currency', currency: 'VND'}).format(document.getElementById('tongTien').innerHTML.replace(/&nbsp;₫|\./gm, '') - document.getElementById('tongTien').innerHTML.replace(/&nbsp;₫|\./gm, '') / document.getElementById('giamGia').innerHTML)
-
-
-            }
-
-            function decreaseCount(a, b) {
-                var input = b.nextElementSibling;
-                var value = parseInt(input.value, 10);
-                if (value > 1) {
-                    value = isNaN(value) ? 0 : value;
-                    value--;
-                    input.value = value;
-                }
-                for (var i = 0; i < unitPrice.length; i++) {
-                    cartTotalPrice[i].innerHTML = new Intl.NumberFormat('vi-VN', {style: 'currency', currency: 'VND'}).format((unitPrice[i].innerHTML).replace(/&nbsp;₫|\./gm, '') * inpQuan[i].value)
-                }
-                a = 0;
-                for (var i = 0; i < cartTotalPrice.length; i++) {
-                    a += (cartTotalPrice[i].innerHTML).replace(/&nbsp;₫|\./gm, '') * 1;
-                    document.getElementById('tongTien').innerHTML = new Intl.NumberFormat('vi-VN', {style: 'currency', currency: 'VND'}).format(a);
-                }
-                document.getElementById('tongTienThanhToan').innerHTML = new Intl.NumberFormat('vi-VN', {style: 'currency', currency: 'VND'}).format(document.getElementById('tongTien').innerHTML.replace(/&nbsp;₫|\./gm, '') - document.getElementById('tongTien').innerHTML.replace(/&nbsp;₫|\./gm, '') / document.getElementById('giamGia').innerHTML)
-
-
-            }
-
+          
 
             for (var i = 0; i < cartTotalPrice.length; i++) {
                 cartTotalPrice[i].innerHTML = unitPrice[i].innerHTML * inpQuan[i].value
@@ -207,7 +168,7 @@
             }
 
             //TongTienThanhToan
-            document.getElementById('tongTienThanhToan').innerHTML = new Intl.NumberFormat('vi-VN', {style: 'currency', currency: 'VND'}).format(document.getElementById('tongTien').innerHTML.replace(/&nbsp;₫|\./gm, '') - document.getElementById('tongTien').innerHTML.replace(/&nbsp;₫|\./gm, '') / document.getElementById('giamGia').innerHTML)
+            document.getElementById('tongTienThanhToan').innerHTML = new Intl.NumberFormat('vi-VN', {style: 'currency', currency: 'VND'}).format(document.getElementById('tongTien').innerHTML.replace(/&nbsp;₫|\./gm, '') - document.getElementById('tongTien').innerHTML.replace(/&nbsp;₫|\./gm, '') * document.getElementById('giamGia').innerHTML/100)
 
 
         </script>

@@ -14,24 +14,22 @@ public class Product {
     private String seriCode;
     private String pinCode;
     private Price price;
+    private String status;
 
     public Product() {
     }
 
-    public Product(int productID, Price price) {
-        this.productID = productID;
-        this.price = price;
-    }
-
-    public Product(Price price) {
-        this.price = price;
-    }
-
-    public Product(int productID, String seriCode, String pinCode, Price price) {
+    public Product(int productID, String seriCode, String pinCode, Price price, String status) {
         this.productID = productID;
         this.seriCode = seriCode;
         this.pinCode = pinCode;
         this.price = price;
+        this.status = status;
+    }
+
+    public Product(String seriCode, String pinCode) {
+        this.seriCode = seriCode;
+        this.pinCode = pinCode;
     }
 
     public int getProductID() {
@@ -66,12 +64,19 @@ public class Product {
         this.price = price;
     }
 
-    @Override
-    public String toString() {
-        return "Product{" + "productID=" + productID + ", seriCode=" + seriCode + ", pinCode=" + pinCode + ", price=" + price + '}';
+    public String getStatus() {
+        return status;
     }
 
-    
-    
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" + "productID=" + productID + ", seriCode=" + seriCode + ", pinCode=" + pinCode + ", price=" + price + ", status=" + status + '}';
+    }
+
+ 
     
 }

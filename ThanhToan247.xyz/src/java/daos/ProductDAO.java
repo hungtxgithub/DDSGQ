@@ -78,7 +78,7 @@ public class ProductDAO extends DBContext {
     public List<Integer> getProductIDByPriceID(int priceID) {
         List<Integer> listProductID = new ArrayList<Integer>();
         try {
-            PreparedStatement ps = getConnection().prepareStatement("select productid from product where PriceID = ?");
+            PreparedStatement ps = getConnection().prepareStatement("select productid from product where PriceID = ? and status = 1");
             ps.setInt(1, priceID);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -89,5 +89,48 @@ public class ProductDAO extends DBContext {
         return listProductID;
     }
 
+    public void updateStatusByProductID(int status, List<Integer> orderID) {
+        try {
+            PreparedStatement ps = getConnection().prepareStatement("UPDATE [dbo].[Product]\n"
+                    + "   SET [Status] = ?\n"
+                    + " WHERE productID = ?");
+            for (Integer i : orderID) {
+                ps.setInt(1, status);
+                ps.setInt(2, i);
+                ps.executeUpdate();
+            }
 
+        } catch (Exception e) {
+        }
+    }
+
+    public List<Integer> getProductIDByOrderID(List<Integer> orderID) {
+        List<Integer> list = new ArrayList<Integer>();
+        try {
+            PreparedStatement ps = getConnection().prepareStatement("select productID from [order] join Price on [Order].PriceID = Price.PriceID "
+                    + "join Product on Price.PriceID = Product.PriceID where orderID = ?");
+            for (Integer integer : orderID) {
+                ps.setInt(1, integer);
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    list.add(rs.getInt(1));
+                }
+            }
+
+        } catch (Exception e) {
+        }
+        return list;
+    }
+    
+    
+
+    public static void main(String[] args) {
+        ProductDAO dao = new ProductDAO();
+        List<Integer> list = new ArrayList<Integer>();
+        list.add(1061);
+        list.add(1062);
+        System.out.println(dao.getProductIDByOrderID(list));
+    }
+
+    
 }

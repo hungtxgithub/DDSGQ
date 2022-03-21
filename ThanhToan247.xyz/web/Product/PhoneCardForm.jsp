@@ -196,7 +196,7 @@
                     <c:forEach items="${price}" var="p">
                         <div <c:if test="${p.priceID==priceID}">${activePrice}</c:if> class='cmg-gia' onclick="window.location = '?supplierID=${supplierID}&priceID=${p.priceID}'">
                             <div class='div-gia1'>${p.price}</div>
-                            <div class='div-gia2'>Giá: ${p.price-(p.price*p.discount/100)}</div>
+                            <div class='div-gia2'>Giá: <span class="gia">${p.price-(p.price*p.discount/100)}</span></div>
                         </div>
                     </c:forEach>
 
@@ -241,6 +241,13 @@
                     value--;
                     input.value = value;
                 }
+            }
+
+            var gia1 = document.getElementsByClassName('div-gia1');
+            var gia = document.getElementsByClassName('gia');
+            for (var i = 0; i < gia1.length; i++) {
+                gia1[i].innerHTML = new Intl.NumberFormat('vi-VN', {style: 'currency', currency: 'VND'}).format(gia1[i].innerHTML * 1)
+                gia[i].innerHTML = new Intl.NumberFormat('vi-VN', {style: 'currency', currency: 'VND'}).format(gia[i].innerHTML * 1)
             }
 
 

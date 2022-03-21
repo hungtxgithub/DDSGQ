@@ -39,3 +39,4 @@ document.querySelectorAll('nav a')[4].addEventListener('click', function () {
     document.getElementById('nav4-animation').style.display = 'none'
 
 });
+

@@ -3,8 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/HungNT/Desktop/Spring2022/Spring2022/PRJ301/ProjectPRJ301/ThanhToan247.xyz/src/java/controllers/Cart.java</file>
+            <file>file:/C:/Users/HungNT/Desktop/Spring2022/Spring2022/PRJ301/ProjectPRJ301/ThanhToan247.xyz/src/java/controllers/AccountManagement.java</file>
+            <file>file:/C:/Users/HungNT/Desktop/Spring2022/Spring2022/PRJ301/ProjectPRJ301/ThanhToan247.xyz/web/Order/OrderForm.jsp</file>
             <file>file:/C:/Users/HungNT/Desktop/Spring2022/Spring2022/PRJ301/ProjectPRJ301/ThanhToan247.xyz/src/java/daos/CartDAO.java</file>
+            <file>file:/C:/Users/HungNT/Desktop/Spring2022/Spring2022/PRJ301/ProjectPRJ301/ThanhToan247.xyz/src/java/daos/ManageDAO.java</file>
+            <file>file:/C:/Users/HungNT/Desktop/Spring2022/Spring2022/PRJ301/ProjectPRJ301/ThanhToan247.xyz/web/Manage/AccountManagement.jsp</file>
+            <file>file:/C:/Users/HungNT/Desktop/Spring2022/Spring2022/PRJ301/ProjectPRJ301/ThanhToan247.xyz/src/java/daos/UserDAO.java</file>
+            <file>file:/C:/Users/HungNT/Desktop/Spring2022/Spring2022/PRJ301/ProjectPRJ301/ThanhToan247.xyz/src/java/models/User.java</file>
+            <file>file:/C:/Users/HungNT/Desktop/Spring2022/Spring2022/PRJ301/ProjectPRJ301/ThanhToan247.xyz/web/Recharge/RechargeForm.jsp</file>
         </group>
     </open-files>
 </project-private>

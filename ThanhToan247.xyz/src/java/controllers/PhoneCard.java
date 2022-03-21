@@ -29,7 +29,7 @@ public class PhoneCard extends HttpServlet {
             request.setAttribute("supplier", new ProductDAO().getSupplierByCardTypeID(1));
             request.setAttribute("price", new ProductDAO().getPriceBySupplierID(Integer.parseInt(request.getParameter("supplierID"))));
             request.setAttribute("active", "style= 'transform: scale(1.2);border: 1px solid rgb(187, 224, 84);'");
-            request.setAttribute("activePrice", "style= 'border: 1px solid rgb(76, 97, 20);transform: scale(1.08);box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;'");
+            request.setAttribute("activePrice", "style= 'border: 1px solid rgb(76, 97, 20);transform: scale(1.08);box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;background-color: papayawhip'");
             request.getSession().setAttribute("urlCurrent", request.getRequestURI());
             request.getRequestDispatcher("Product/PhoneCard.jsp").forward(request, response);
         } catch (Exception e) {

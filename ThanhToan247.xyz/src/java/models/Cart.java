@@ -25,6 +25,12 @@ public class Cart {
         this.quantity = quantity;
     }
 
+    public Cart(Price price, int quantity, int userID) {
+        this.price = price;
+        this.quantity = quantity;
+        this.userID = userID;
+    }
+
     public Cart(int cartID, Price price, int quantity, int userID) {
         this.cartID = cartID;
         this.price = price;

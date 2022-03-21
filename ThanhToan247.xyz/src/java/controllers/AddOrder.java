@@ -5,13 +5,18 @@
  */
 package controllers;
 
+import daos.CartDAO;
+import daos.OrderDAO;
+import daos.ProductDAO;
+import daos.UserDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import models.User;
 
 /**
  *
@@ -32,18 +37,26 @@ public class AddOrder extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet AddOrder</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet AddOrder at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        CartDAO cartDAO = new CartDAO();
+        HttpSession session = request.getSession();
+        int userID = ((User) session.getAttribute("user")).getUserID();
+        float discountByUser = ((User) session.getAttribute("user")).getDiscount();
+        float remainMoney = ((User) session.getAttribute("user")).getRemainingMoney();
+        float sumMoneyCart = Float.parseFloat(request.getParameter("sum"));
+        if (remainMoney >= sumMoneyCart) {
+            new OrderDAO().insertOrderByCart(new CartDAO().displayCartByUserID(userID), discountByUser);
+            new OrderDAO().insertOrderDetailsByOrderID(new OrderDAO().getOrderIDByUserID(userID));
+            cartDAO.deleteCart();
+            new ProductDAO().updateStatusByProductID(0, new ProductDAO().getProductIDByOrderID(new OrderDAO().getOrderIDByUserID(userID)));
+            new UserDAO().updateRemainingMoney(userID, remainMoney - Float.parseFloat(request.getParameter("sum")));
+            session.setAttribute("cart", cartDAO.displayCartByUserID(((User) session.getAttribute("user")).getUserID()));
+            response.sendRedirect("order");
+        }else{
+            session.setAttribute("moneyNotEnough", "Số dư tài khoản không đủ vui lòng nạp thêm!");
+            session.setAttribute("cart", cartDAO.displayCartByUserID(((User) session.getAttribute("user")).getUserID()));
+            response.sendRedirect("cart");
         }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

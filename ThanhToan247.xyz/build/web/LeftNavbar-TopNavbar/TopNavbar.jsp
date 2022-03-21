@@ -160,6 +160,15 @@
                 left: 470px;
             }
 
+            nav a:nth-child(6) {
+                width: 120px;
+            }
+
+            nav a:nth-child(6):hover~.animation {
+                width: 120px;
+                left: 590px;
+            }
+            
             .navdiv2 {
                 display: inline-block;
             }
@@ -232,7 +241,17 @@
                 position: absolute;
                 margin-top: -5px;
             }
-
+            #nav6-animation {
+                display: none;
+                border-radius: 8px;
+                height: 5px;
+                width: 120px;
+                margin-left: 590px;
+                background-color: white;
+                position: absolute;
+                margin-top: -5px;
+            }
+            
             .img-avatar {
                 margin: -13px 0px;
                 height: 38px;
@@ -551,12 +570,14 @@
                         <a href="order">Đơn hàng</a>
                         <a href="notification">Thông báo</a>
                         <a href="contact">Liên hệ</a>
+                        <a href="manage">Quản lý</a>
                         <div class="animation start-home"></div>
                         <div id='nav1-animation' ${displayBlock1}></div>
                         <div id='nav2-animation' ${displayBlock2}></div>
                         <div id='nav3-animation' ${displayBlock3}></div>
                         <div id='nav4-animation' ${displayBlock4}></div>
                         <div id='nav5-animation' ${displayBlock5}></div>
+                        <div id='nav6-animation' ${displayBlock6}></div>
                     </nav>
                 </div>
             </div>
@@ -570,7 +591,7 @@
 
 
                         <!--Nocart--> 
-                        <c:if test="${cart==null}">
+                        <c:if test="${cart.size()==0||cart==null}">
                             <img src="https://taphoa.cz/static/media/cart-empty-img.8b677cb3.png" alt="No Cart" class="header__cart-no-cart-img" />
                             <div class="header__cart-list-no-cart-msg">
                                 Chưa có sản phẩm
@@ -580,7 +601,7 @@
 
 
                         <!--HaveCart-->
-                        <c:if test="${cart!=null}">
+                        <c:if test="${cart.size()!=0}">
                             <h4 class="header__cart-heading">Sản phẩm đã thêm</h4>
                             <!--Cart item--> 
                             <ul class="header__cart-list-item">
@@ -633,6 +654,12 @@
             </c:if>
         </div>
 
+        <script>
+            var priceHeader = document.getElementsByClassName('header__cart-item-price');
+            for (var i = 0; i < priceHeader.length; i++) {
+                priceHeader[i].innerHTML = new Intl.NumberFormat('vi-VN', {style: 'currency', currency: 'VND'}).format(priceHeader[i].innerHTML * 1)
+            }
+        </script>
         <script src="../js/topnavbar.js"></script>
     </body>
 

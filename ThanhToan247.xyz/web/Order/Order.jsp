@@ -23,8 +23,7 @@
 
             <div class="home-content">
             <jsp:include page="../LeftNavbar-TopNavbar/TopNavbar.jsp"></jsp:include>
-            This is order
-
+            <jsp:include page="OrderForm.jsp"></jsp:include>
         </div>
 
         <script src="js/javascript.js"></script>

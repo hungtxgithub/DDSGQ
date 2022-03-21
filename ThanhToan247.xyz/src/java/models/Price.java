@@ -18,6 +18,30 @@ public class Price {
     public Price() {
     }
 
+    public Price(float price, Supplier supplier) {
+        this.price = price;
+        this.supplier = supplier;
+    }
+
+    public Price(Supplier supplier) {
+        this.supplier = supplier;
+    }
+
+    public Price(int priceID) {
+        this.priceID = priceID;
+    }
+
+    public Price(int priceID, float price, float discount) {
+        this.priceID = priceID;
+        this.price = price;
+        this.discount = discount;
+    }
+
+    public Price(float price, float discount) {
+        this.price = price;
+        this.discount = discount;
+    }
+
     public Price(float price, Supplier supplier, float discount) {
         this.price = price;
         this.supplier = supplier;

@@ -5,6 +5,7 @@
  */
 package controllers;
 
+import daos.OrderDAO;
 import daos.RechargeDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -37,9 +38,21 @@ public class Order extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         if (session.getAttribute("user") != null) {
+            
             int userID = ((User) session.getAttribute("user")).getUserID();
-            request.setAttribute("historyRecharge", new RechargeDAO().getHistoryRecharges(userID));
+            int totalProduct = new OrderDAO().getTotalOrderByUserID(userID);
+            
+            request.setAttribute("totalPage", (totalProduct % 10) != 0 ? totalProduct / 10 + 1 : totalProduct / 10);
+            if (request.getParameter("page") != null) {
+                int page = Integer.parseInt(request.getParameter("page"));
+                request.setAttribute("page", request.getParameter("page"));
+                request.setAttribute("order", new OrderDAO().paggingOrderByUserID(page, 10, userID));
+            } else {
+                request.setAttribute("page", 1);
+                request.setAttribute("order", new OrderDAO().paggingOrderByUserID(1, 10, userID));
+            }
             request.getRequestDispatcher("Order/Order.jsp").forward(request, response);
+            
         } else {
             request.setAttribute("errorLogin", "Vui lòng đăng nhập!");
             request.getRequestDispatcher("Login-SignUp-ForgotPass/Login.jsp").forward(request, response);
